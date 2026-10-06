@@ -22,9 +22,10 @@ finds it without reading.
 
 ## Jira ticket, Decision type
 
-Budget: one ticket. Format: the team's ticket template; Markdown through the
-MCP, or ADF through REST v3 where MCP writes fail (`render-targets.md` [15]).
-ADF carries colour; Markdown does not.
+Budget: one ticket. Format: the project's ticket template when it has one,
+else the default slots below; Markdown through an MCP server, or ADF through
+REST v3 where MCP writes fail (`render-targets.md` [15]). ADF carries colour;
+Markdown does not.
 
 ```text
 ## Context            2–3 lines: where, shortest path to the gap
@@ -40,7 +41,8 @@ ADF carries colour; Markdown does not.
 
 ## MR description
 
-Budget: 4–6 lines. Format: the team's MR template.
+Budget: 4–6 lines. Format: the project's MR template when it has one, else
+these lines:
 
 | Line | Content |
 | --- | --- |
@@ -54,11 +56,12 @@ after, which the code diff does not.
 
 ## Release note, Confluence
 
-Budget: a page, facts not narrative. Format: the team's release-note template.
+Budget: a page, facts not narrative. Format: the project's release-note
+template when it has one.
 
 - A bold status line on top.
-- The *Prod before → Prod after* columns are the red/green: the sign or the
-  arrow carries the change; a cell colour adds to it (✅ cell background,
+- The *before → after* columns are the red/green: the sign or the arrow
+  carries the change; a cell colour adds to it (✅ cell background,
   `render-targets.md` [14]).
 - No mermaid: an attached PNG with its caption in the text.
 
@@ -80,8 +83,8 @@ Budget: one message, no scroll.
 
 - One verdict line, then three lines or bullets at most, `label: value`.
 - One visual: a small table, a `diff` block, or a pre-rendered image.
-- ✅ Tables and coloured `diff` blocks render when sent through the MCP
-  (probe 2026-10-06); mermaid and GitLab inline diff do not.
+- ✅ Tables and coloured `diff` blocks render when sent through an MCP
+  server (probe 2026-10-06); mermaid and GitLab inline diff do not.
 - Red/green: a `diff` block for lines, emoji plus words in a table cell
   (🟥 before · 🟩 after).
 - The rest behind a link.

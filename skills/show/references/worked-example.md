@@ -21,7 +21,7 @@ verdict on it: « super ». The author's request it answered, verbatim:
 | Overview | eight decisions | matrix: `Ref` · line · subject · current (red) · recommendation (green) · basis | 0.1, 0.3 (basis column = source) |
 | D1 product-code input | an algorithm that branches; data touched | flowchart with red and green paths; table input × legacy system / v1 / ADR / reco | 1, 0.3; "illustrative code, format only" flags an example value in place |
 | D2 Begins / Contains | options sharing criteria; a user-visible change | table operator × legacy / plan / reco; two-line diff | 1; the hedge "probably 0 (… not measured)" kept in place, 0.4 |
-| D3 searchable flags | old vs new schema; data touched | field diff; operator table from the acceptance tests | 1, 0.3 with file and lines |
+| D3 full-text flags | old vs new schema; data touched | field diff; operator table from the acceptance tests | 1, 0.3 with file and lines |
 | D4 market filter | a process across four components changes | sequence today, sequence proposed | ⚠️ 0.4: unverified path named where it sits |
 | D5 v2 write | a process with a failure branch | one sequence with `alt` | 0.2 verdict defers the open question to its ticket |
 | D6 one document per product | a structure change | class diagrams v1 / v2; response-field diff | 1: structure → diagram, consequence → diff |
@@ -52,7 +52,7 @@ change and the colour, and the terminal colours it (`render-targets.md` [1]):
 - 3 search-proxy → index         filter without market
 - 4 index → front                every product
 + 2 catalog-api → search-proxy   filters + market
-+ 3 search-proxy → index v2      offers/any(o: o/markets/any(m: m eq code))
++ 3 search-proxy → index v2      offer.markets contains code
 + 4 index v2 → front             products sold in that market
 ```
 
@@ -69,7 +69,7 @@ the doubt sat on the block it could overturn.
 
 ## Fallback 2: D3 in a Jira ticket
 
-Markdown through the MCP. Markdown has no colour syntax on Jira
+Markdown through an MCP server. Markdown has no colour syntax on Jira
 (ADF has one, `render-targets.md` [15]), so the signs carry the change; no
 italics around inline code; no `>` at the start of a cell. The
 acceptance-test operator table is dropped for budget, behind the source line.
@@ -79,16 +79,16 @@ acceptance-test operator table is dropped for budget, behind the source line.
 
 | Field (`catalog-index-v2.json`) | Today | Proposed |
 | --- | --- | --- |
-| `offers/seller/sellerId` | ✗ searchable: false | ✓ searchable: true |
-| `offers/seller/vatNumber` | ✗ searchable: false | ✓ searchable: true |
-| `offers/seller/name` | ✗ searchable: false | ✓ searchable: true |
-| `brand/name` | ✗ searchable: false | ✓ searchable: true |
+| `offers.seller.sellerId` | ✗ full-text: off | ✓ full-text: on |
+| `offers.seller.vatNumber` | ✗ full-text: off | ✓ full-text: on |
+| `offers.seller.name` | ✗ full-text: off | ✓ full-text: on |
+| `brand.name` | ✗ full-text: off | ✓ full-text: on |
 
-**Restore searchable** on the 4 fields: behaviour does not change, the v2
+**Restore full-text** on the 4 fields: behaviour does not change, the v2
 index is empty, and the field-scoped match no longer needs testing.
 
 Source: every filter operator runs a field-scoped full-text match, which
-requires a searchable field (`filters.py`:40-58). The schema generator
+requires a full-text field (`filters.py`:40-58). The schema generator
 checked the free-text field list only.
 ```
 

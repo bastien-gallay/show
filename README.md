@@ -44,7 +44,7 @@ ln -s "$PWD/skills/show" ~/.claude/skills/show
 
 ## Status
 
-0.3.3, 2026-10-06. Every ✅ in the render matrix points to a numbered source
+0.3.4, 2026-10-06. Every ✅ in the render matrix points to a numbered source
 under it: a dated probe or capture, daily use, an indirect or private
 observation, or `shape`'s own matrix; a ✓? or ❓ is a probe still to run.
 The worked example retells a real decision page on a fictional product
