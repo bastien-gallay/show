@@ -1,6 +1,6 @@
 {
   "name": "show",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Visual grammar for anything written for a reader: which visual the content calls for, how it renders or falls back on each target, and the page rules that make it scannable.",
   "author": {
     "name": "Bastien Gallay"

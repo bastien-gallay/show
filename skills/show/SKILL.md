@@ -43,17 +43,28 @@ user-invocable: false
    bullet or table cell: `✅ mermaid`, not `mermaid ✅`. The eye scans the
    left edge; a marker at the end is read last, or not at all.
 8. **Prose budget.** Between two visuals, prose carries the verdict and what
-   the visual cannot say. The rest takes a form: definitions → a glossary
-   table; a reading → one claim per bullet; a computation → a `text` block,
+   the visual cannot say. The rest takes a form: definitions → rule 9; a
+   reading → one claim per bullet; bullets that share their fields
+   (*measure: value → consequence*) → a table; a computation → a `text` block,
    one step per line; a hypothesis → `⚠️ H: … → verify: …` where it sits; a
    status every row shares → said once, in the caption; a repeated
    conversion (time zone, unit) → one rule at the top; a cell over about 50
    words → a short cell and a note under the table. ⚠️ About 60 words between
    two visuals is the working threshold, not yet calibrated.
-9. **Every handle defined before its first use.** A letter or an acronym
-   (`G`, `M1`, `SKU`) is defined where it first appears and gathered in a
-   glossary under the verdict. A letter handle is mnemonic. A table more than
-   a screen away from the glossary repeats its legend in one line.
+9. **Jargon defined just before it is used.** A term of the document or of
+   its cluster of documents (a letter handle, a regime, a derived measure) is
+   defined right before the block that first uses it, grouped by theme, like
+   the variables listed before a formula. The block's verdict still comes
+   first, in plain words; the terms follow it. A block a screen further
+   redefines the terms it uses. A letter handle is mnemonic and shares its
+   letter with no other series of handles (regime `S` beside sources
+   `S1…S17` misleads). Generic domain terms (`ACK`, a partner's name, `p95`)
+   go to the end, one line near the top saying where:
+   - `.md` in a cluster of documents: the cluster's glossary, linked; an
+     annex for what it lacks.
+   - Typst, a full presentation: a complete glossary annex; the document
+     travels alone.
+   - an agent answer: a one-line reminder of the handles the answer uses.
 
 ## 1. Content → visual (invariant)
 
@@ -169,7 +180,9 @@ survives the gate even when the arrow between them is wrong.
 | a chart where a three-row table would do | the table |
 | a mean and a median standing in for a distribution's shape | a histogram |
 | two `xychart` bar series, the later one larger somewhere | it hides the earlier one: reorder, or an SVG |
-| a letter handle used before its definition | define it at first use; glossary under the verdict |
+| a letter handle used before its definition | define it just before the block that uses it (rule 9) |
+| an exhaustive glossary at the top | document terms by theme before their use; generic terms in an annex or the cluster glossary |
+| two series of handles sharing a letter | rename one series |
 | a fallback invented at write time | take it from `references/render-targets.md` |
 
 `references/worked-example.md` takes one page apart rule by rule.

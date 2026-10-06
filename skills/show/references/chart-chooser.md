@@ -38,6 +38,10 @@ Ask in order; stop at the first answer that settles it.
 - ❓ Propose it when it needs data the document does not hold (a full series
   behind a summary table), a reconstruction from a few points, or a choice of
   emphasis among several readings of one table.
+- ⚠️ A curve the document holds only as a few points (a start, a peak, an
+  end per cycle): plot those points at their true x, join them with dashed
+  segments, and say the series between them was not read. Never interpolate
+  values to fill an evenly spaced axis.
 - ⚠️ Before drawing a trend, check the points compare: a series whose last
   point covers a smaller batch shows a decline that is partly an artefact.
 
