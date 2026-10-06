@@ -62,7 +62,9 @@ the bar and drift out of line: climb to mermaid.
 ## Mermaid charts: what they draw, and the traps
 
 Probe, 2026-10-06: `mmdc` 11.12.0, each chart compiled and looked at. A
-host such as GitLab bundles its own mermaid version: ✓? until probed there.
+host bundles its own mermaid version: GitLab drew `gantt` and
+`xychart-beta` with two lines over bars the same day (`render-targets.md`
+[16]); any other construct or host stays ✓? until probed there.
 
 | Construct | Result |
 | --- | --- |

@@ -19,7 +19,7 @@ which stays the source for what its gates check.
 | Target | Diagram | Red/green | Tables | Mono block | Image, SVG | Interactive |
 | --- | --- | --- | --- | --- | --- | --- |
 | Terminal, Claude Code | ⛔ mermaid shows as source; ✅ ASCII in a block [2] | ✅ `diff` block coloured [1]; ✓? emoji 🟥 🟩 | ✅ width-bound [2] | ✅ [1] [2] | ⛔ | ⛔ |
-| `.md` and MR, GitLab | ✅ mermaid [3] [11]; ✓? `classDef` colours | ✅ `diff` block [11]; ✅ inline `{+ +}` `{- -}` `[+ +]` `[- -]` [11] | ✅ [4] [11] | ✅ [4] [11] | ✓? | ⛔ |
+| `.md` and MR, GitLab | ✅ mermaid [3] [11], `gantt` and `xychart-beta` included [16]; ✓? `classDef` colours | ✅ `diff` block [11]; ✅ inline `{+ +}` `{- -}` `[+ +]` `[- -]` [11] | ✅ [4] [11] | ✅ [4] [11] | ✅ SVG by relative path [16] | ⛔ |
 | `.md`, GitHub | ✅ mermaid [5] | ✓? `diff` block; ✓? no inline diff | ✅ [5] | ✓? | ✓? | ⛔ |
 | Typst | ✅ pre-rendered SVG, ⚠️ `htmlLabels: false` [12]; ❓ native packages | ✅ free colour, ⚠️ escape a leading `+` [12] | ✅ cell fill [12] | ✓? | ✅ SVG [12] | ⛔ |
 | Artifact, HTML | ✅ mermaid from CDN [6] | ✅ [6] | ✅ [6] | ✅ [6] | ✅ SVG, as mermaid draws [6] | ✓? uPlot, ECharts (the Artifact CDN allowlist not checked) |
@@ -91,6 +91,12 @@ which stays the source for what its gates check.
     turns lozenges into bold coloured text: judge Jira on the issue view,
     never on `renderedFields`. Read back through the MCP, the ADF comes out
     as Markdown with fences tagged `diff` and `mermaid`.
+16. Probe, 2026-10-06: a page of a docs repository on gitlab.com, judged by
+    the author on the rendered page: two hand-written SVG charts linked by
+    relative path (`![…](charts/x.svg)`, text kept as `<text>`), an
+    `xychart-beta` with two `line` series over a `bar` series, and `gantt`
+    charts render. The same page's `pie` and stacked bars were not asked
+    about; GitLab's bundled mermaid version was not read.
 
 ## Declared fallbacks
 
