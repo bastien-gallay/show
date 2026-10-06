@@ -70,6 +70,7 @@ host bundles its own mermaid version: GitLab drew `gantt` and
 | --- | --- |
 | `pie showData` | ✅ parts with their values in the legend |
 | `gantt`, `dateFormat HH:mm:ss` | ✅ proportional clock axis; a bar too short for its label prints the label at its right |
+| `gantt`, a `:` inside a task label (`… 05:45 to 05:53 :crit, …`) | ⛔ the label is cut at the first colon and the tags after it (`crit`, `done`) are lost; it still compiles. Keep clock times out of labels |
 | `xychart-beta`, `line` over `bar` | ✅ a reference line, such as the uniform expectation on a histogram |
 | `xychart-beta`, two `bar` series | ⛔ drawn at the same x, the later one on top, and no legend: a later series larger at any category hides the earlier one |
 | `xychart-beta`, cumulative `bar` series, largest first | ✅ a stacked bar (whole, whole minus top part, …) or a range (high, central, low) |
