@@ -44,6 +44,13 @@ Ask in order; stop at the first answer that settles it.
   values to fill an evenly spaced axis.
 - ⚠️ Before drawing a trend, check the points compare: a series whose last
   point covers a smaller batch shows a decline that is partly an artefact.
+- ✅ A chart drawn from a data file ships with that file and its generator,
+  next to the document. The generator asserts every value the caption or the
+  text states about the chart and refuses to draw otherwise; the caption
+  claims only the checks the generator makes. Prove the asserts bite: change
+  one stated value in a copy of the document, and the generator must refuse.
+  Example: a caption says the line matches the table's peaks; the generator
+  recomputes each peak from the series and compares it with the table cell.
 
 ## Time on an axis: gantt, timeline or flow
 
