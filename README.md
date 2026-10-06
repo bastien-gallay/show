@@ -13,6 +13,7 @@ a reflex in `CLAUDE.md`, load it by name before choosing a visual.
 | --- | --- |
 | `skills/show/SKILL.md` | page rules, content → visual table, render and budget, render ladder, routing to other skills |
 | `skills/show/references/render-targets.md` | capability matrix per target, with the source of every ✅, and the declared fallbacks |
+| `skills/show/references/chart-chooser.md` | whether a table earns a chart, which one, and the mermaid chart traps |
 | `skills/show/references/page-patterns.md` | one pattern per genre (decision page, ticket, MR, release note, terminal answer, Slack, slide) |
 | `skills/show/references/worked-example.md` | one decision page taken apart rule by rule |
 
@@ -43,7 +44,7 @@ ln -s "$PWD/skills/show" ~/.claude/skills/show
 
 ## Status
 
-0.1.0, 2026-10-06. Every ✅ in the render matrix points to a numbered source
+0.2.0, 2026-10-06. Every ✅ in the render matrix points to a numbered source
 under it: a dated probe or capture, daily use, an indirect or private
 observation, or `shape`'s own matrix; a ✓? or ❓ is a probe still to run.
 The worked example retells a real decision page on a fictional product

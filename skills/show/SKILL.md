@@ -42,6 +42,18 @@ user-invocable: false
 7. **Status marker first.** A status marker (✅ ❌ ⚠️ ⛔ ❓) opens its line,
    bullet or table cell: `✅ mermaid`, not `mermaid ✅`. The eye scans the
    left edge; a marker at the end is read last, or not at all.
+8. **Prose budget.** Between two visuals, prose carries the verdict and what
+   the visual cannot say. The rest takes a form: definitions → a glossary
+   table; a reading → one claim per bullet; a computation → a `text` block,
+   one step per line; a hypothesis → `⚠️ H: … → verify: …` where it sits; a
+   status every row shares → said once, in the caption; a repeated
+   conversion (time zone, unit) → one rule at the top; a cell over about 50
+   words → a short cell and a note under the table. ⚠️ About 60 words between
+   two visuals is the working threshold, not yet calibrated.
+9. **Every handle defined before its first use.** A letter or an acronym
+   (`G`, `M1`, `SKU`) is defined where it first appears and gathered in a
+   glossary under the verdict. A letter handle is mnemonic. A table more than
+   a screen away from the glossary repeats its legend in one line.
 
 ## 1. Content → visual (invariant)
 
@@ -53,9 +65,11 @@ user-invocable: false
 | an algorithm that branches | flowchart, changed nodes outlined red/green and signed | indented tree in a mono block |
 | a linear procedure, no branch | ⛔ not a flowchart: a numbered list | same |
 | old vs new: config, schema, rule, wording | red/green diff with signs | `diff` block; else the sign alone |
-| numbers in series, a proportion, two orders of magnitude | chart → load `dataviz` | table, and say what it loses |
+| numbers whose comparison carries the verdict: shares, a trend, a distribution, ranges | chart chosen in `references/chart-chooser.md`; form and colours through `dataviz` where installed | table, and say what it loses |
 | options sharing criteria | option table, recommendation ⭐ | same |
-| a chronology | timeline or ordered list | ordered list |
+| durations and proportions on a clock | gantt | proportional ASCII bar in a mono block |
+| intervals that overlap, such as concurrency | gantt, one section per lane | one ASCII row per lane |
+| a chronology, order only | timeline or ordered list | ordered list |
 
 **Combine.** One block often needs two visuals: an algorithm plus the data it
 touches, a structure change plus the field diff it causes. The unit is one
@@ -89,7 +103,7 @@ define the slots, and this grammar fills them. Patterns per genre:
 
 | Rung | Use when | Targets | Watch |
 | --- | --- | --- | --- |
-| ASCII in a mono block | the target has no renderer | terminal, Jira code block, Slack code block | ≤ 80 columns; always fenced |
+| ASCII in a mono block | the target has no renderer | terminal, Jira code block, Slack code block | ≤ 80 columns; always fenced; a proportional bar stays ASCII while every segment is ≥ 5 columns and holds its label |
 | mermaid | relation, sequence, structure that stays legible at its size | GitLab, GitHub, Artifact; elsewhere pre-rendered | compile it before shipping: a `;` in a sequence message breaks it and no lint sees it |
 | SVG | mermaid lays it out badly, or the audience is wide and mixed (business, PMO, external) | Artifact, Typst; Jira, Slack as an image; Confluence as an attached image, never an `mmdc` SVG: it shows *Preview unavailable* | keep text as text so facts stay searchable; from mermaid, render with `htmlLabels: false` or Typst shows empty boxes; caption in the surrounding text where the target drops `alt` |
 | interactive (uPlot, ECharts) | a data report the reader explores: zoom, hover, series toggle | HTML and Artifact only | design through `dataviz`; ship a static SVG or PNG for every other target |
@@ -119,7 +133,8 @@ Both settled in `shape` and `glance` on 2026-10-06.
 
 | Need | Load |
 | --- | --- |
-| form and colours of a numeric chart | `dataviz` |
+| which chart a table earns | `references/chart-chooser.md` |
+| form and colours of a numeric chart | `dataviz`, where installed |
 | visual polish and accessibility of a page or deck meant for wide diffusion or web/slide output | `impeccable` (`audit`, `polish`) |
 | proof the visual version lost nothing and reads at least as well | `shape` (fact survival, cold retrieval) |
 | a deck | the Artifact Slides type or a Typst deck template; its assertion subtitle is rule 0.2 |
@@ -152,6 +167,9 @@ survives the gate even when the arrow between them is wrong.
 | raw mermaid sent to Jira or Confluence | pre-render it, or use the declared fallback |
 | ASCII art outside a fence | fence it |
 | a chart where a three-row table would do | the table |
+| a mean and a median standing in for a distribution's shape | a histogram |
+| two `xychart` bar series, the later one larger somewhere | it hides the earlier one: reorder, or an SVG |
+| a letter handle used before its definition | define it at first use; glossary under the verdict |
 | a fallback invented at write time | take it from `references/render-targets.md` |
 
 `references/worked-example.md` takes one page apart rule by rule.
