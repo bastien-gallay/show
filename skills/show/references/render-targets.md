@@ -23,7 +23,7 @@ which stays the source for what its gates check.
 | `.md`, GitHub | ✅ mermaid [5] | ✓? `diff` block; ✓? no inline diff | ✅ [5] | ✓? | ✓? | ⛔ |
 | Typst | ✅ pre-rendered SVG, ⚠️ `htmlLabels: false` [12]; ❓ native packages | ✅ free colour, ⚠️ escape a leading `+` [12] | ✅ cell fill [12] | ✓? | ✅ SVG [12] | ⛔ |
 | Artifact, HTML | ✅ mermaid from CDN [6] | ✅ [6] | ✅ [6] | ✅ [6] | ✅ SVG, as mermaid draws [6] | ✓? uPlot, ECharts (the Artifact CDN allowlist not checked) |
-| Confluence | ⛔ native [5]; ✅ attached image [7] | ✅ `diff` code macro; ✅ status lozenge; ✅ coloured text; ✅ cell background [14] | ✅ [5]; ✅ emoji [14] | ✅ code macro, numbered lines [14] | ✅ [7] [8]; ⛔ SVG from `mmdc` [14] | ⛔ native; ❓ marketplace apps |
+| Confluence | ⛔ native [5]; ✅ attached image [7] | ✅ `diff` code macro; ✅ status lozenge; ✅ coloured text; ✅ cell background [14] | ✅ [5]; ✅ emoji [14] | ✅ code macro, numbered lines [14] | ✅ [7] [8]; ✅ `mmdc` SVG with width and height [14]; ⛔ a REST draft published from the editor [14] | ⛔ native; ❓ marketplace apps |
 | Jira, ADF via REST v3 | ⛔ mermaid stays code [15] | ✅ `diff` code block; ✅ status lozenge; ✅ coloured text; ✅ cell background [15] | ✅ emoji [15] | ✅ code block, numbered lines [15] | ❓ | ⛔ |
 | Jira, MCP markdown | ⛔ [5] | ⛔ no colour syntax; ✓? `diff` block, if mapped to an ADF code block [15]; ✅ emoji [5] | ✅ [5] [9], ⚠️ leading `>` eaten | ✅ code block [5] | ❓ through MCP | ⛔ |
 | Slack message, via the MCP | ⛔ mermaid stays a code block [13] | ✅ `diff` block coloured [13]; ✅ emoji [13]; ✅ `~~strike~~` [13]; ⛔ inline `{+ +}` [13] | ✅ [13] | ✅ [13] | ✓? upload [10] | ⛔ |
@@ -76,11 +76,17 @@ which stays the source for what its gates check.
     `body.view` HTML. The `diff` code macro colours `-` lines red and `+`
     lines green, with line numbers; status lozenges, coloured text (with a
     dark-mode variant) and `data-highlight-colour` cells render; emoji
-    survive. The `mmdc` SVG (`htmlLabels: false`, uploaded with HTTP 200 as
-    `image/svg+xml`) shows *Preview unavailable* on the draft and on the
-    published page. ❓ Hypothesis, not tested: its root has `width="100%"`
-    and no `height`, so no intrinsic size; explicit dimensions, or a PNG,
-    are the next probe. Jira not tried.
+    survive. Images, re-probed the same day (A2, A3): a PNG, an `mmdc` SVG
+    with `width` and `height` set on its root, and the raw `mmdc` SVG
+    (`width="100%"`, no `height`), attached by REST. ⛔ The draft opened and
+    published from the editor showed none of the three: its body came out
+    with `UNKNOWN_MEDIA_ID` in every media node, so the first probe's
+    *Preview unavailable* on the SVG blamed the file for the editor's fault.
+    ✅ The storage body written again through REST (`PUT`, status
+    `current`, as the CI does [7]) and the page only viewed: all three show.
+    ⚠️ The raw SVG still renders as a broken image in `body.view`, the
+    server-side HTML; exports and e-mail were not tested, so set `width` and
+    `height` on the SVG root. Jira not tried.
 15. Probe, 2026-10-06: a throwaway Bug in a dormant project, created through
     REST v3 with an ADF body (the Rovo MCP's `createJiraIssue` answered 403),
     judged on a capture of the issue view, then cancelled. The view
@@ -102,7 +108,7 @@ which stays the source for what its gates check.
 
 | Construct | Unavailable → use, in order |
 | --- | --- |
-| mermaid diagram | pre-rendered SVG or PNG with the caption in the text (on Confluence an attached image [7], ⛔ not an `mmdc` SVG [14]) → a table of the same relation → ASCII in a mono block |
+| mermaid diagram | pre-rendered SVG or PNG with the caption in the text (on Confluence an attached image whose body is written through REST, never re-published from the editor [7] [14]) → a table of the same relation → ASCII in a mono block |
 | sequence diagram | image → numbered arrows `A → B : message` in a mono block |
 | class or ER diagram | image → table field × before / after, rows signed |
 | red/green colour | `diff` block where it is coloured → sign alone (`−` / `+`, ✗ / ✓); never colour alone |

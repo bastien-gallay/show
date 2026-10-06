@@ -116,7 +116,7 @@ define the slots, and this grammar fills them. Patterns per genre:
 | --- | --- | --- | --- |
 | ASCII in a mono block | the target has no renderer | terminal, Jira code block, Slack code block | ≤ 80 columns; always fenced; a proportional bar stays ASCII while every segment is ≥ 5 columns and holds its label |
 | mermaid | relation, sequence, structure that stays legible at its size | GitLab, GitHub, Artifact; elsewhere pre-rendered | compile it before shipping: a `;` in a sequence message breaks it and no lint sees it |
-| SVG | mermaid lays it out badly, or the audience is wide and mixed (business, PMO, external) | Artifact, Typst; Jira, Slack as an image; Confluence as an attached image, never an `mmdc` SVG: it shows *Preview unavailable* | keep text as text so facts stay searchable; from mermaid, render with `htmlLabels: false` or Typst shows empty boxes; caption in the surrounding text where the target drops `alt` |
+| SVG | mermaid lays it out badly, or the audience is wide and mixed (business, PMO, external) | Artifact, Typst; Jira, Slack as an image; Confluence as an attached image, `width` and `height` on the SVG root, the body written through REST: a draft re-published from the editor loses every image | keep text as text so facts stay searchable; from mermaid, render with `htmlLabels: false` or Typst shows empty boxes; caption in the surrounding text where the target drops `alt` |
 | interactive (uPlot, ECharts) | a data report the reader explores: zoom, hover, series toggle | HTML and Artifact only | design through `dataviz`; ship a static SVG or PNG for every other target |
 
 Climb a rung when the lower one loses information the reader needs, not for

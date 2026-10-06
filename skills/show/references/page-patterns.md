@@ -63,7 +63,8 @@ template when it has one.
 - The *before → after* columns are the red/green: the sign or the arrow
   carries the change; a cell colour adds to it (✅ cell background,
   `render-targets.md` [14]).
-- No mermaid: an attached PNG with its caption in the text.
+- No mermaid: an attached SVG or PNG with its caption in the text
+  (`render-targets.md` [14]).
 
 ## Terminal answer
 
