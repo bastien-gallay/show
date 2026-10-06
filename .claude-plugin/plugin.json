@@ -1,0 +1,19 @@
+{
+  "name": "show",
+  "version": "0.1.0",
+  "description": "Visual grammar for anything written for a reader: which visual the content calls for, how it renders or falls back on each target, and the page rules that make it scannable.",
+  "author": {
+    "name": "Bastien Gallay"
+  },
+  "homepage": "https://github.com/bastien-gallay/show",
+  "repository": "https://github.com/bastien-gallay/show",
+  "license": "MIT",
+  "keywords": [
+    "show",
+    "visual",
+    "diagram",
+    "mermaid",
+    "documentation",
+    "technical-writing"
+  ]
+}
